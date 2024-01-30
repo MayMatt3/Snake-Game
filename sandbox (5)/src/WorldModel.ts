@@ -6,10 +6,10 @@ class WorldModel {
   private width: number;
   private height: number;
 
-  constructor(snake: Snake, width: number, height: number) {
+  constructor(snake: Snake, passedHidth: number, passedHeight: number) {
     this.snake = snake;
-    this.width = width;
-    this.height = height;
+    this.width = passedWidth;
+    this.height = passedHeight;
   }
 
   update(steps: number) {
@@ -20,11 +20,11 @@ class WorldModel {
     return this.snake;
   }
 
-  get width(): number {
+  get passedWidth(): number {
     return this.width;
   }
 
-  get height(): number {
+  get passedHeight(): number {
     return this.height;
   }
 }
