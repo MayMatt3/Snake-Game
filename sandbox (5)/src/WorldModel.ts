@@ -3,8 +3,8 @@ import Snake from "./Snake";
 
 class WorldModel {
   private snake: Snake;
-  private width: number;
-  private height: number;
+  public width: number;
+  public height: number;
 
   constructor(snake: Snake, passedHidth: number, passedHeight: number) {
     this.snake = snake;
