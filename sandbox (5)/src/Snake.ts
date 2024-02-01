@@ -7,8 +7,8 @@ import Point from "./Point";
 class Snake {
   private currentPosition: number;
   private currentDirection: number;
-  private position: Point;
-  private direction: string;
+  public position: Point;
+  public direction: string;
 
   constructor() {
     this.currentPosition = 0;
@@ -56,7 +56,7 @@ class Snake {
     return this.currentPosition;
   }
 
-  public get direction() {
+  public get directions() {
     return this.currentDirection;
   }
 }
