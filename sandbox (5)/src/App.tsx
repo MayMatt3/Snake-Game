@@ -9,7 +9,6 @@ export default function App() {
   useEffect(() => {
     // Include your display statements to test below
     document.getElementById("output")!.innerText = "OUTPUT:\n";
-    display("hey");
     const redSnake = new Snake();
     const blueSnake = new Snake();
     redSnake.move(1);
@@ -18,8 +17,10 @@ export default function App() {
     blueSnake.move(4);
     blueSnake.move(2);
     blueSnake.turn();
-    display("Red snake moved a total of:", redSnake.positions, "squares");
-    display("Blue snake moved a total of:", blueSnake.positions, "squares");
+    display("Red snake's x position is:", redSnake.position.x);
+    display("Red snake direction is:", redSnake.directions);
+    display("Blue snake moved a total of:", blueSnake.position.y);
+    display("Blue snake direction is:", blueSnake.directions);
   }, []);
   return (
     <div className="App">
