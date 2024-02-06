@@ -19,7 +19,7 @@ export default function App() {
     blueSnake.turn();
     display("Red snake's x position is:", redSnake.position.x);
     display("Red snake direction is:", redSnake.directions);
-    display("Blue snake's y position is:", blueSnake.position.y);
+    display("Blue snake's x position is:", blueSnake.position.x);
     display("Blue snake direction is:", blueSnake.directions);
   }, []);
   return (
