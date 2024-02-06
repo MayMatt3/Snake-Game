@@ -41,9 +41,7 @@ class Snake {
     else if (this.direction === "left") this.direction = "up";
   }
 
-  /**
-   * @deprecated
-   */
+  /*
   turn() {
     if (this.currentDirection === 1) {
       this.currentDirection = -1;
@@ -51,6 +49,7 @@ class Snake {
       this.currentDirection = 1;
     }
   }
+  */
 
   public get positions() {
     return this.currentPosition;
