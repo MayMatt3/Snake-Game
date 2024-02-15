@@ -1,5 +1,8 @@
 import display from "./display";
 import Snake from "./Snake";
+import CanvasWorldView from "./CanvasWorldView";
+import IWorldView from "./IWorldView";
+
 
 class WorldModel {
   private snake_: Snake;
