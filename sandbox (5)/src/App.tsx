@@ -3,6 +3,8 @@ import "./App.css";
 import Snake from "./Snake";
 import display from "./display";
 import { useEffect } from "react";
+import WorldModel from "./WorldModel";
+import CanvasWorldView from "./CanvasWorldView";
 
 export default function App() {
   // Add Snake Tests with display below
