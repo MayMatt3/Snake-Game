@@ -12,9 +12,9 @@ export default function App() {
     // Include your display statements to test below
     document.getElementById("output")!.innerText = "OUTPUT:\n";
     const worldModel = new WorldModel(redSnake, 100, 50);
-    const canvasWorldView = new CanvasWorldView();
+    const canvasWorldView = new CanvasWorldView(10);
     worldModel.view = canvasWorldView;
-    worldModel.update();
+    worldModel.update(1);
     const redSnake = new Snake();
     const blueSnake = new Snake();
     redSnake.move(1);
