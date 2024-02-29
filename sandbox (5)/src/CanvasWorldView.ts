@@ -9,7 +9,7 @@ class CanvasWorldView implements IWorldView {
   constructor(scalingFactor: number) {
     this.scalingFactor = scalingFactor;
     this.worldCanvas = document.createElement("canvas");
-    this.context = this.worldCanvas.getContext("2d");
+    this.context = this.worldCanvas.getContext("2d")!;
     document.body.appendChild(this.worldCanvas);
   }
 
@@ -20,8 +20,8 @@ class CanvasWorldView implements IWorldView {
     const snake = worldModel.snake();
     this.context.fillStyle = "red"; // color of the snake
     this.context.fillRect(
-      snake.getX() * this.scalingFactor,
-      snake.getY() * this.scalingFactor,
+      snake.position.x() * this.scalingFactor,
+      snake.position.y() * this.scalingFactor,
       this.scalingFactor,
       this.scalingFactor,
     );
