@@ -19,8 +19,19 @@ class GameController {
 
   private lastTime: number = 0;
 
+  // runs the game
   run(): void {
     let lastTime = 0;
+    let updateFrame = (milliseconds: number) => {
+      this.player1.makeTurn();
+      this.player2.makeTurn();
+      if (milliseconds - lastTime > 250) {
+        lastTime = milliseconds;
+        this.world.update(1);
+      }
+      requestAnimationFrame(updateFrame);
+    };
+    requestAnimationFrame(updateFrame);
   }
 }
 
