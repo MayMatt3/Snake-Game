@@ -19,13 +19,13 @@ class AvoidWallsPlayer extends Player {
     ) {
       this.sc.turnSnakeRight();
     } else if (
-      this.sc.snakePosition.x === 50 &&
+      this.sc.snakePosition.x === 25 &&
       this.sc.snakeDirection === "right" &&
       this.sc.snakePosition.y < this.sc.worldHeight / 2
     ) {
       this.sc.turnSnakeRight();
     } else if (
-      this.sc.snakePosition.x === 50 &&
+      this.sc.snakePosition.x === 25 &&
       this.sc.snakeDirection === "right"
     ) {
       this.sc.turnSnakeLeft();
@@ -41,13 +41,13 @@ class AvoidWallsPlayer extends Player {
     ) {
       this.sc.turnSnakeRight();
     } else if (
-      this.sc.snakePosition.y === 50 &&
+      this.sc.snakePosition.y === 25 &&
       this.sc.snakeDirection === "up" &&
       this.sc.snakePosition.y < this.sc.worldWidth / 2
     ) {
       this.sc.turnSnakeLeft();
     } else if (
-      this.sc.snakePosition.y === 50 &&
+      this.sc.snakePosition.y === 25 &&
       this.sc.snakeDirection === "up"
     ) {
       this.sc.turnSnakeRight();
