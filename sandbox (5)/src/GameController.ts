@@ -3,18 +3,20 @@ import Player from "./Player";
 
 class GameController {
   private world: WorldModel;
-  public player1: Player;
-  public player2: Player;
+  private player1_: Player | null;
+  private player2_: Player | null;
 
   constructor(world: WorldModel) {
     this.world = world;
+    this.player1_ = null;
+    this.player2_ = null;
   }
 
-  setPlayer1(player: Player) {
-    this.player1 = player;
+  set player1(player: Player) {
+    this.player1_ = player;
   }
-  setPlayer2(player: Player) {
-    this.player2 = player;
+  set player2(player: Player) {
+    this.player2_ = player;
   }
 
   private lastTime: number = 0;
@@ -26,7 +28,7 @@ class GameController {
       this.player1.makeTurn();
       this.player2.makeTurn();
       if (milliseconds - lastTime > 250) {
-        lastTime = milliseconds;
+        lastTime += 250;
         this.world.update(1);
       }
       requestAnimationFrame(updateFrame);
