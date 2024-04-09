@@ -3,11 +3,13 @@ import SnakeController from "./SnakeController";
 import IInputHandler from "./IInputHandler";
 
 class HumanPlayer extends Player {
-  constructor(
-    private snakeController: SnakeController,
-    private inputHandler: IInputHandler,
-  ) {
+  private inputHandler: IInputHandler;
+  private snakeController: SnakeController;
+
+  constructor(snakeController: SnakeController, inputHandler: IInputHandler) {
     super(snakeController);
+    this.inputHandler = inputHandler;
+    this.snakeController = snakeController;
   }
 
   makeTurn(): void {
