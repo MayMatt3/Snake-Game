@@ -1,10 +1,12 @@
 import IInputHandler from "./IInputHandler";
 
 class LRKeyInputHandler implements IInputHandler {
-  private wasLeftArrowPushed: boolean = false;
-  private wasRightArrowPushed: boolean = false;
+  private wasLeftArrowPushed: boolean;
+  private wasRightArrowPushed: boolean;
 
   constructor() {
+    this.wasLeftArrowPushed = false;
+    this.wasRightArrowPushed = false;
     window.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft") {
         this.wasLeftArrowPushed = true;
