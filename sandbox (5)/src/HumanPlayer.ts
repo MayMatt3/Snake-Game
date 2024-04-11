@@ -12,7 +12,7 @@ class HumanPlayer extends Player {
 
   /**
    * Creates a HumanPlayer
-   * @param snakeController - The snake controller representing the player's interaction with the game
+   * @param snakeController - The snake controller represents the player's interaction with the game
    * @param inputhandler - The input handler for detecting player moves
    */
   constructor(snakeController: SnakeController, inputHandler: IInputHandler) {
