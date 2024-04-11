@@ -1,35 +1,62 @@
-// import Snake from "./Snake";
+import Snake from "./Snake";
+import Point from "./Point";
 
-/*
-const moveSnakes = (times: number, turn: boolean = false) => {
-  const greenSnake = new Snake("green");
-  const maroonSnake = new Snake("maroon");
+describe("Snake class", () => {
+  let snake: Snake;
+
+  beforeEach(() => {
+    snake = new Snake();
+  });
+
+  it("should initialize with default position and direction", () => {
+    expect(snake.position).toEqual(new Point(0, 0));
+    expect(snake.direction).toBe("right");
+  });
+
+  it("should move up when turning left", () => {
+    snake.turnLeft();
+    snake.move(1);
+    expect(snake.position).toEqual(new Point(0, -1));
+    expect(snake.direction).toBe("up");
+  });
+
+  it("should move down when turning right", () => {
+    snake.turnRight();
+    snake.move(1);
+    expect(snake.position).toEqual(new Point(0, 1));
+    expect(snake.direction).toBe("down");
+  });
+});
+
+/**const moveSnakes = (times: number, turn: boolean = false) => {
+  const redSnake = new Snake();
+  const blueSnake = new Snake();
   let totalSquares = 0;
 
   for (let i = 0; i < times; i++) {
     const numSquares1 = Math.floor(Math.random() * 100);
     const numSquares2 = Math.floor(Math.random() * 100);
-    greenSnake.move(numSquares1);
-    maroonSnake.move(numSquares2);
-    greenSnake.move(5);
+    redSnake.move(numSquares1);
+    blueSnake.move(numSquares2);
+    redSnake.move(5);
     totalSquares += numSquares2;
     if (turn) {
       const numSquares3 = Math.floor(Math.random() * 100);
       const numSquares4 = Math.floor(Math.random() * 10);
-      greenSnake.turn();
-      maroonSnake.turn();
-      maroonSnake.move(numSquares3);
+      redSnake.turnLeft();
+      blueSnake.turnLeft();
+      blueSnake.move(numSquares3);
       totalSquares -= numSquares3;
-      greenSnake.move(numSquares3);
-      maroonSnake.turn();
-      maroonSnake.turn();
-      maroonSnake.turn();
-      maroonSnake.move(numSquares4);
+      redSnake.move(numSquares3);
+      blueSnake.turnRight();
+      blueSnake.turnRight();
+      blueSnake.turnLeft();
+      blueSnake.move(numSquares4);
       totalSquares += numSquares4;
     }
   }
 
-  return { actual: maroonSnake.position, expected: totalSquares };
+  return { actual: blueSnake.position, expected: totalSquares };
 };
 
 describe("Snake Tests", function () {
@@ -48,12 +75,12 @@ describe("Snake Tests", function () {
     );
   });
 });
-*/
 
 describe("Addition", function () {
   it("sums numbers", () => {
     expect(1 + 1).toEqual(2);
   });
 });
+*/
 
 export {};
