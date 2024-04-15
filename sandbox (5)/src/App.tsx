@@ -34,8 +34,8 @@ export default function App() {
     worldModel.update(1);
 
     const gameController = new GameController(worldModel);
-    gameController.player1(player1);
-    gameController.player2(player2);
+    gameController.player1 = player1;
+    gameController.player2 = player2;
     gameController.run();
 
     display(
