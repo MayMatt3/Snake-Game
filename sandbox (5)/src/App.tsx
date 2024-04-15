@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import WorldModel from "./WorldModel";
 import CanvasWorldView from "./CanvasWorldView";
 import SnakeController from "./SnakeController";
-import Player from "./Player";
 import HumanPlayer from "./HumanPlayer";
 import AvoidWallsPlayer from "./AvoidWallsPlayer";
 import LRKeyInputHandler from "./LRKeyInputHandler";
@@ -21,23 +20,33 @@ export default function App() {
     const blueSnake = new Snake();
     redSnake.move(1);
     redSnake.move(3);
-    redSnake.turnLeft();
+    redSnake.turnRight();
     blueSnake.move(6);
     blueSnake.move(2);
-    blueSnake.turnRight();
+    blueSnake.turnLeft();
     const worldModel = new WorldModel(redSnake, 50, 50);
     const snakeController = new SnakeController(worldModel, redSnake);
     const player1 = new HumanPlayer(snakeController, new LRKeyInputHandler());
     const player2 = new AvoidWallsPlayer(snakeController);
     const canvasWorldView = new CanvasWorldView(10);
     worldModel.view = canvasWorldView;
+
     worldModel.update(1);
+
     const gameController = new GameController(worldModel);
-    display("Red snake's x position is:", redSnake.position.x);
-    display("Red snake's y position is:", redSnake.position.y);
+    gameController.player1(player1);
+    gameController.player2(player2);
+    gameController.run();
+
+    display(
+      "Red snake's position is:",
+      redSnake.position.x + "," + redSnake.position.y,
+    );
     display("Red snake direction is:", redSnake.direction);
-    display("Blue snake's x position is:", blueSnake.position.x);
-    display("Blue snake's y position is:", blueSnake.position.y);
+    display(
+      "Blue snake's position is:",
+      blueSnake.position.x + "," + blueSnake.position.y,
+    );
     display("Blue snake direction is:", blueSnake.direction);
   }, []);
   return (
