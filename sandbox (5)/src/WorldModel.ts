@@ -3,13 +3,13 @@ import Snake from "./Snake";
 import IWorldView from "./IWorldView";
 
 /**
- * Class representing a worldModel
+ * Class representing a worldModel of the game
  */
 class WorldModel {
-  private snake_: Snake;
+  private allSnakes_: Snake[];
   private width_: number;
   private height_: number;
-  private worldView: IWorldView | null = null;
+  private allViews_: IWorldView[];
 
   /**
    * Creates a worldModel
@@ -18,9 +18,18 @@ class WorldModel {
    * @param height - the height of the world
    */
   constructor(snake: Snake, width: number, height: number) {
-    this.snake_ = snake;
+    this.allSnakes_ = [];
+    this.allViews_ = [];
     this.width_ = 100;
     this.height_ = 100;
+  }
+
+  addSnake(snake: Snake) {
+    this.allSnakes_.push(snake);
+  }
+
+  addView(view: IWorldView) {
+    this.allViews_.push(view);
   }
 
   /**
@@ -28,19 +37,22 @@ class WorldModel {
    * Moves the snake and updates the world view if not null
    * @param steps - the number of steps to update the worldModel
    */
-  update(steps: number) {
-    this.snake.move(steps);
+  update(steps: number): void {
+    for (let i = 0; i < this.allSnakes.length; i++) {
+      this.allSnakes_[i].move(steps);
+    }
 
-    if (this.worldView !== null) {
-      this.worldView.display(this);
+    // Update all views with reference to this WorldModel
+    for (const view of this.allViews_) {
+      view.display(this);
     }
   }
 
   /**
-   * Gets the snake representing the player
+   * Gets an array containing all the snake objects representing players.
    */
-  public get snake() {
-    return this.snake_;
+  get allSnakes() {
+    return this.allSnakes_;
   }
 
   /**
@@ -60,9 +72,9 @@ class WorldModel {
   /**
    * Sets the world view for displaying the game world
    */
-  set view(worldView: IWorldView | null) {
+  /*set view(worldView: IWorldView | null) {
     this.worldView = worldView;
-  }
+  }*/
 }
 
 export default WorldModel;
