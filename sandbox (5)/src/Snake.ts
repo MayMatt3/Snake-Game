@@ -5,35 +5,66 @@ import Point from "./Point";
 // place your code on line 5 above the export statement below
 
 /**
- * Class represents a snake
+ * Class represents a snake in the game
  */
 class Snake {
-  //private currentPosition: number;
-  //private currentDirection: number;
-  private position_: Point;
   private direction_: string;
+  private size: number;
+  private startPosition_: Point;
+  private currentParts: Point[];
+
   /**
-   * Create a snake
+   * create a snake
    */
-  constructor() {
+  constructor(startPoistion: Point = new Point(0, 0), size: number = 10) {
     //this.currentPosition = 0;
     //this.currentDirection = 1;
-    this.position_ = new Point(0, 0);
+    this.startPosition_ = startPoistion; //the starting position of the snake's head.
+    this.size = size; //the length of the snake
+    this.currentParts = [this.startPosition_];
     this.direction_ = "right";
+
+    /**
+     * An array of points representing the snake's body segments
+     * The first element represents the head
+     */
+
+    for (let i = 1; i < this.size; i++) {
+      this.currentParts[i] = new Point(
+        this.currentParts[i - 1].x - 1,
+        this.currentParts[i - 1].y,
+      );
+    }
   }
 
   /**
-   * moves the snake by a number of squares based on its current direction
+   * moves the snake by updating the head position based on its direction and then shifting the tail segments.
    */
   move(squares: number) {
+    for (let i = this.size - 1; i > 0; i--) {
+      this.currentParts[i] = this.currentParts[i - 1];
+    }
+
     if (this.direction_ === "up")
-      this.position_ = new Point(this.position.x, this.position.y - 1);
+      this.currentParts[0] = new Point(
+        this.position.x,
+        this.position.y - squares,
+      );
     else if (this.direction_ === "down")
-      this.position_ = new Point(this.position.x, this.position.y + 1);
+      this.currentParts[0] = new Point(
+        this.position.x,
+        this.position.y + squares,
+      );
     else if (this.direction_ === "left")
-      this.position_ = new Point(this.position.x - 1, this.position.y);
+      this.currentParts[0] = new Point(
+        this.position.x - squares,
+        this.position.y,
+      );
     else if (this.direction_ === "right")
-      this.position_ = new Point(this.position.x + 1, this.position.y);
+      this.currentParts[0] = new Point(
+        this.position.x + squares,
+        this.position.y,
+      );
   }
 
   /**
@@ -59,16 +90,34 @@ class Snake {
   /**turn() {
     if (this.currentDirection === 1) {
       this.currentDirection = -1;
-    } else if (this.currentDirection === -1) {
+    } else {
       this.currentDirection = 1;
     }
   }*/
 
+  didCollide(s: Snake) {
+    // Check collision with other snake's body parts. (occurs if the head of the snake overlaps with any part of another snake.)
+    for (const part of s.currentParts.slice(1)) {
+      if (this.position.equals(part)) {
+        return true;
+      }
+    }
+
+    // Check collision with its own tail
+    for (const part of this.currentParts.slice(1)) {
+      if (this.position.equals(part)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   /**
-   * gets the current position of the snake
+   * gets the current position of the snake's head (the first element in currentParts).
    */
   public get position() {
-    return this.position_;
+    return this.currentParts[0];
   }
 
   /**
