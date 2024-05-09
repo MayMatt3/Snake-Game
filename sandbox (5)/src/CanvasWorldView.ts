@@ -35,13 +35,15 @@ class CanvasWorldView implements IWorldView {
       this.worldCanvas.height,
     );
     // Render the snake
-    const snake = worldModel.snake;
+    const snakes = worldModel.allSnakes;
     this.context.fillStyle = "red"; // color of the snake
-    this.context.fillRect(
-      snake.position.x * this.scalingFactor,
-      snake.position.y * this.scalingFactor,
-      this.scalingFactor,
-      this.scalingFactor,
+    snakes.forEach((snake) =>
+      this.context.fillRect(
+        snake.position.x * this.scalingFactor,
+        snake.position.y * this.scalingFactor,
+        this.scalingFactor,
+        this.scalingFactor,
+      ),
     );
   }
 }
