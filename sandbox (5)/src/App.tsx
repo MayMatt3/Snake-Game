@@ -24,12 +24,15 @@ export default function App() {
     blueSnake.move(6);
     blueSnake.move(2);
     blueSnake.turnLeft();
-    const worldModel = new WorldModel(redSnake, 50, 50);
+    const worldModel = new WorldModel(redSnake, 100, 100);
+    worldModel.addSnake(redSnake);
+    worldModel.addSnake(blueSnake);
     const snakeController = new SnakeController(worldModel, redSnake);
     const player1 = new HumanPlayer(snakeController, new LRKeyInputHandler());
-    const player2 = new AvoidWallsPlayer(snakeController);
+    const snakeController2 = new SnakeController(worldModel, blueSnake);
+    const player2 = new AvoidWallsPlayer(snakeController2);
     const canvasWorldView = new CanvasWorldView(10);
-    worldModel.view = canvasWorldView;
+    worldModel.addView(canvasWorldView);
 
     worldModel.update(1);
 
